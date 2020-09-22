@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'),
+        url('../../assets/fonts/open-sans-v13-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('../../assets/fonts/open-sans-v13-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../../assets/semantic/semantic.min.css">
+    <script src="../../assets/jquery-3.1.1.min.js"></script>
+    <script src="../../assets/jquery.address.min.js"></script>
+    <script src="../../assets/semantic/semantic.min.js"></script>
+    <link href="../../assets/highlight/railscasts.min.css" rel="stylesheet">
+    <script src="../../assets/highlight/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      
+        <a href="../index.html">  <i class="sitemap icon"></i> Simple   </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab-01">
+          Lab-01
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic-01-simple/book-a/index.html">Lab-01 </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab-01">
+            <h1 id="objectives">Objectives</h1>
+<p>A few sentences on the purpose of the lab. Avoid bullet points here for formatting reasons.</p>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1 id="text">Text</h1>
+<p>It's very easy to make some words <strong>bold</strong> and other words <em>italic</em> with Markdown. You can even <a href="http://google.com" rel="noopener noreferrer" target="_blank">inset a link to Google</a></p>
+<h2 id="lists">Lists</h2>
+<p>Sometimes you want numbered lists:</p>
+<ol>
+<li>One</li>
+<li>Two</li>
+<li>Three</li>
+</ol>
+<p>Sometimes you want bullet points:</p>
+<ul>
+<li>Start a line with a star</li>
+<li>Profit!</li>
+</ul>
+<p>Alternatively,</p>
+<ul>
+<li>Dashes work just as well</li>
+<li>And if you have sub points, put two spaces before the dash or star:</li>
+<li>Like this</li>
+<li>And this</li>
+</ul>
+<h2 id="images">Images</h2>
+<p>If you want a link to a local image, place the image in the <code>img</code> folder and then insert a link like this:</p>
+<p><img src="img/02.jpg" alt="" /></p>
+<p>Alternatively you can directly link to images on the web:</p>
+<p><img src="https://octodex.github.com/images/yaktocat.png" alt="Image of Yaktocat" /></p>
+<p>The above includes a title.</p>
+<h1 id="structureddocuments">Structured documents</h1>
+<p>Sometimes it's useful to have different levels of headings to structure your documents. Start lines with a <code>#</code> to create headings. Multiple <code>##</code> in a row denote smaller heading sizes.</p>
+<h3 id="thisisathirdtierheading">This is a third-tier heading</h3>
+<p>You can use one <code>#</code> all the way up to <code>######</code> six for different heading sizes.</p>
+<p>If you'd like to quote someone, use the &gt; character before the line:</p>
+<blockquote>
+  <p>Coffee. The finest organic suspension ever devised… I beat the Borg with it.</p>
+  <ul>
+  <li>Captain Janeway</li>
+  </ul>
+</blockquote>
+<p>There are many different ways to style code with GitHub's markdown. If you have inline code blocks, wrap them in backticks: <code>var example = true</code>.  If you've got a longer block of code, you can indent with four spaces:</p>
+<pre><code class="hljs"><span class="hljs-keyword">if</span> (isAwesome){
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+}
+</code></pre>
+<p>GitHub also supports something called code fencing, which allows for multiple lines without indentation:</p>
+<pre><code class="hljs"><span class="hljs-keyword">if</span> (isAwesome){
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+}
+</code></pre>
+<p>And if you'd like to use syntax highlighting, include the language:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">if</span> (isAwesome){
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+}
+</code></pre>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1 id="tableslinesandimages">Tables, Lines and Images</h1>
+<p>Tables can look like this:</p>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th style="text-align:center;">Are</th>
+<th style="text-align:right;">Cool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>col 3 is</td>
+<td style="text-align:center;">right-aligned</td>
+<td style="text-align:right;">$1600</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td style="text-align:center;">centered</td>
+<td style="text-align:right;">$12</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td style="text-align:center;">are neat</td>
+<td style="text-align:right;">$1</td>
+</tr>
+</tbody>
+</table>
+<p>A horizontal rules above and below</p>
+<hr />
+<p>Some more images:</p>
+<p><img src="img/01.jpg" alt="" /></p>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1 id="linksandcodeblocks">Links and Code Blocks</h1>
+<p>You can inert links in bullet points:</p>
+<ul>
+<li><a href="http://github.com" rel="noopener noreferrer" target="_blank">http://github.com</a></li>
+<li><a href="http://bitbucket.dom" rel="noopener noreferrer" target="_blank">http://bitbucket.dom</a></li>
+</ul>
+<p>You can also insert links to other steps:</p>
+<ul>
+<li><a href="#/01">Step 01</a></li>
+<li><a href="#/02">Step 02</a></li>
+<li><a href="#/03">Step 03</a></li>
+<li><a href="#/04">Step 04</a></li>
+</ul>
+<p>More Code Block examples</p>
+<pre><code class="hljs java language-java">  publish(path, course) {
+    <span class="hljs-keyword">const</span> basePath = <span class="hljs-string">'../'</span> + path + <span class="hljs-string">'/'</span> + <span class="hljs-keyword">this</span>.folder;
+    futils.initEmptyPath(basePath);
+
+    <span class="hljs-keyword">this</span>.resources = <span class="hljs-keyword">this</span>.talks.concat(<span class="hljs-keyword">this</span>.labs);
+    futils.copyFileToFolder(<span class="hljs-keyword">this</span>.img, basePath);
+    futils.writeFile(basePath + <span class="hljs-string">'/index.html'</span>, nunjucks.render(<span class="hljs-string">'topic.html'</span>, <span class="hljs-keyword">this</span>));
+
+    futils.writeFile(basePath + <span class="hljs-string">'/ajaxlabel.html'</span>,
+        nunjucks.render(<span class="hljs-string">'ajaxlabel.html'</span>,
+            { url: <span class="hljs-keyword">this</span>.url.substring(<span class="hljs-number">5</span>) + <span class="hljs-string">'/'</span> + <span class="hljs-keyword">this</span>.folder }));
+    futils.writeFile(basePath + <span class="hljs-string">'/indexmoodle.html'</span>, nunjucks.render(<span class="hljs-string">'indexmoodle.html'</span>, <span class="hljs-keyword">this</span>));
+
+    console.log(<span class="hljs-keyword">this</span>.title);
+    <span class="hljs-keyword">this</span>.publishTalks(basePath);
+    <span class="hljs-keyword">this</span>.publishLabs(basePath, course);
+  }
+</code></pre>
+<p>This was autodetected as javascript. This one is html:</p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ui segment pushable"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ui inverted labeled icon left inline vertical sidebar menu"</span>&gt;</span>
+    {% for resource in course.allLabs.resources %}
+      {% if resource.title == title %}
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"active item"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../{{resource.parentFolder}}/{{resource.folder}}/{{resource.link}}"</span>&gt;</span>
+          {{resource.title}}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+      {% else %}
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"item"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../{{resource.parentFolder}}/{{resource.folder}}/{{resource.link}}"</span>&gt;</span>
+          {{resource.title}}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+      {% endif %}
+    {% endfor %}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pusher"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ui basic segment"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+      {% for chapter in chapters %}
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>  <span class="hljs-attr">class</span>=<span class="hljs-string">"ui tab segment lab"</span> <span class="hljs-attr">data-tab</span>=<span class="hljs-string">"{{chapter.shortTitle}}"</span>&gt;</span>
+        {{ chapter.content }}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+     {% endfor %}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1 id="images">Images</h1>
+<p>Image without a title:</p>
+<p><img src="img/04.jpg" alt="" /></p>
+<p>Image with a title:</p>
+<p><img src="img/03.jpg" alt="This is a Stone Arch" /></p>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1 id="exercisesarchives">Exercises &amp; Archives</h1>
+<p>You can link to zipped archives:</p>
+<ul>
+<li><a href="./archives/archive.zip" rel="noopener noreferrer" target="_blank">Solutions</a></li>
+</ul>
+<p>This archive must be placed in the <code>archives</code> folder as shown above.</p>
+<h2 id="exercise1">Exercise 1:</h2>
+<p>Instructions for exercise 1.</p>
+<h2 id="exercise2">Exercise 2:</h2>
+<p>Instructions for exercise 2.</p>
+<h2 id="exercise3">Exercise 3:</h2>
+<p>Instructions for exercise 3.</p>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ar">tutors-ar.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>
